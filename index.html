@@ -3,39 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BongiNala Trucking - Driving Your Success</title>
+    <title>BongiNala Trucking - Driving Pan-African Success</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             overflow: hidden; /* Prevents body scroll */
-            background-color: #f0f4f8; /* Light background for the page */
+            background-color: #111827; /* Dark base background */
         }
-        header {
+        header.company-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(17, 24, 39, 0.9); /* Darker, slightly transparent bg */
-            backdrop-filter: blur(10px);
+            background-color: rgba(17, 24, 39, 0.85); /* Dark, slightly transparent */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
         }
-        .nav-link {
-            padding: 1rem 1.5rem;
-            color: #e5e7eb; /* Lighter text for contrast */
+        .company-nav-link {
+            padding: 1rem 1.25rem;
+            color: #d1d5db; /* Lighter gray for nav links */
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s, color 0.3s;
-            border-radius: 0.375rem; /* Rounded corners for nav links */
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .nav-link:hover, .nav-link.active {
-            background-color: #f97316; /* Orange accent */
+        .company-nav-link svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            opacity: 0.8;
+        }
+        .company-nav-link:hover, .company-nav-link.active {
+            background-color: #f97316; /* Vibrant Orange */
             color: #ffffff;
         }
-        .section {
+        .company-nav-link:hover svg, .company-nav-link.active svg {
+            opacity: 1;
+        }
+        .company-section {
             width: 100%;
             height: 100vh;
             padding-top: 70px; /* Adjust based on header height */
@@ -45,411 +57,435 @@
             overflow-y: auto; /* Allow internal scroll if content exceeds viewport */
             box-sizing: border-box;
         }
-        .section.active {
+        .company-section.active {
             display: flex; /* Show active section */
             flex-direction: column;
+            animation: sectionFadeIn 0.6s ease-in-out;
         }
-        .content-container {
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .company-content-container {
             max-width: 1200px;
             width: 90%;
-            padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 0.75rem; /* Rounded corners for content boxes */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 2.5rem; /* Increased padding */
+            background-color: rgba(31, 41, 55, 0.9); /* Darker content background */
+            border-radius: 0.75rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             text-align: center;
+            color: #e5e7eb; /* Light text for content */
         }
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/333333/cccccc?text=Modern+Truck+on+Open+Road') no-repeat center center;
+
+        /* Hero Section Specific */
+        #company-home.company-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('https://placehold.co/1920x1080/f97316/111827?text=BongiNala+Fleet+Power') no-repeat center center;
             background-size: cover;
         }
-        .hero-section .content-container {
-            background-color: rgba(17, 24, 39, 0.7); /* Dark semi-transparent for hero content */
-            color: white;
+        #company-home .company-content-container {
+            background-color: transparent;
+            box-shadow: none;
         }
-        h1, h2, h3 {
+        #company-home h1 {
             font-family: 'Roboto Slab', serif;
-            color: #111827; /* Dark gray for headings */
+            font-size: 4.5rem; /* Larger hero title */
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
         }
-        .hero-section h1, .hero-section p {
-            color: #f3f4f6; /* Lighter text for hero */
+        #company-home p.subtitle {
+            font-size: 1.75rem;
+            color: #f3f4f6;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
         }
-        .btn {
+        .btn-primary, .btn-secondary {
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700; /* Bolder buttons */
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-primary {
             background-color: #f97316; /* Orange */
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            display: inline-block;
-            margin-top: 1rem;
         }
-        .btn:hover {
+        .btn-primary:hover {
             background-color: #ea580c; /* Darker orange */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249,115,22,0.4);
         }
         .btn-secondary {
             background-color: #4b5563; /* Gray */
+            color: white;
         }
         .btn-secondary:hover {
             background-color: #374151; /* Darker gray */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(75,85,99,0.4);
+        }
+        .btn-primary svg, .btn-secondary svg { width: 1.25rem; height: 1.25rem; }
+
+
+        /* General Section Styling */
+        .company-section h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 3rem;
+            color: #f97316; /* Orange for headings */
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #4b5563; /* Gray underline */
+            display: inline-block;
+        }
+        .company-section p, .company-section ul li {
+            font-size: 1.1rem;
+            color: #d1d5db; /* Lighter text for readability on dark bg */
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+        .company-section .text-center p { text-align: center; }
+
+        /* Service Cards */
+        .service-card {
+            background-color: rgba(55, 65, 81, 0.7); /* Slightly lighter dark shade */
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .service-card-icon {
+            background-color: #f97316;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 50%;
+            display: inline-flex;
+            margin-bottom: 1rem;
+        }
+        .service-card-icon svg { width: 2rem; height: 2rem; }
+        .service-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
         }
 
-        /* Carousel Styles */
-        .carousel {
+        /* Booking Form */
+        .form-input-company {
+            width: 100%;
+            padding: 0.85rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #4b5563;
+            border-radius: 0.375rem;
+            box-sizing: border-box;
+            background-color: #1f2937; /* Dark input background */
+            color: #e5e7eb; /* Light input text */
+        }
+        .form-input-company::placeholder { color: #9ca3af; }
+        .form-textarea-company { min-height: 120px; }
+
+        /* Resources Carousel */
+        .resources-carousel {
             position: relative;
             width: 100%;
-            max-width: 800px; /* Max width for carousel content */
-            margin: 2rem auto;
+            max-width: 900px; /* Wider carousel */
+            margin: 1.5rem auto;
             overflow: hidden;
             border-radius: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .carousel-inner {
+        .resources-carousel-inner {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-        .carousel-item {
+        .resource-item {
             min-width: 100%;
             box-sizing: border-box;
-            padding: 1.5rem;
-            background-color: #f9fafb; /* Light gray for carousel items */
-            border: 1px solid #e5e7eb;
+            padding: 2rem;
+            background-color: #1f2937; /* Darker item background */
+            border: 1px solid #374151;
             border-radius: 0.5rem;
-        }
-        .carousel-item h4 {
-            color: #f97316; /* Orange for carousel titles */
-            margin-bottom: 0.75rem;
-        }
-        .carousel-item ul {
-            list-style-position: inside;
             text-align: left;
-            padding-left: 0.5rem;
         }
-        .carousel-item ul li {
-            margin-bottom: 0.5rem;
-            color: #374151; /* Darker text for list items */
-        }
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 10;
-        }
-        .carousel-control.prev { left: 10px; }
-        .carousel-control.next { right: 10px; }
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            box-sizing: border-box;
-        }
-        .form-textarea {
-            min-height: 100px;
-        }
-        /* Zulu pattern - subtle background for About Us or as an accent */
-        .zulu-accent-bg {
-            /* Example: A subtle geometric pattern using CSS gradients */
-            /* background-image: linear-gradient(45deg, #fef3c7 25%, transparent 25%), linear-gradient(-45deg, #fef3c7 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #fef3c7 75%), linear-gradient(-45deg, transparent 75%, #fef3c7 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px; */
-            /* Or use an actual SVG pattern if available */
-        }
-        .owner-quote {
-            font-style: italic;
-            color: #4b5563; /* Gray for quote */
-            border-left: 4px solid #f97316; /* Orange accent */
-            padding-left: 1rem;
-            margin: 1.5rem 0;
-        }
-         /* Footer */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #111827; /* Dark background for footer */
-            color: #9ca3af; /* Light gray text */
+        .resource-item h3 { /* Country Name */
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            color: #f97316; /* Orange */
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 0.5rem 0; /* Reduced padding */
-            font-size: 0.875rem; /* Smaller font size */
+        }
+        .resource-item h4 { /* Category like Driver Req. */
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #e5e7eb; /* White-ish */
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #4b5563;
+        }
+        .resource-item ul { list-style-position: inside; padding-left: 0.5rem; }
+        .resource-item ul li { margin-bottom: 0.5rem; color: #9ca3af; } /* Lighter gray for list items */
+        .carousel-controls-company { text-align: center; margin-top: 1.5rem; }
+        .carousel-btn-company {
+            background-color: #f97316; color: white; border: none;
+            padding: 0.7rem 1.2rem; border-radius: 0.375rem; cursor: pointer;
+            margin: 0 0.5rem; transition: background-color 0.3s;
+        }
+        .carousel-btn-company:hover { background-color: #ea580c; }
+
+        .company-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            text-align: center; padding: 0.75rem; background-color: #000; /* Black footer */
+            color: #9ca3af; font-family: 'Inter', sans-serif; font-size: 0.875rem;
             z-index: 1000;
         }
+        .contact-icon { color: #f97316; margin-right: 0.5rem; }
     </style>
 </head>
 <body>
 
-    <header class="shadow-md">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Bongi<span class="text-orange-500">Nala</span></a>
+    <header class="company-header">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="#company-home" class="text-3xl font-extrabold text-white">Bongi<span class="text-orange-500">Nala</span></a>
             <div>
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About Us</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#booking" class="nav-link">Book Service</a>
-                <a href="#resources" class="nav-link">Resources</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#company-home" class="company-nav-link active">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg>
+                    Home
+                </a>
+                <a href="#company-about" class="company-nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121.75 12c0 .779-.102 1.533-.294 2.243m-1.01 4.468A11.953 11.953 0 0112 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686-4.582A8.959 8.959 0 002.25 12c0 .779.102 1.533.294 2.243m1.01 4.468A11.953 11.953 0 0012 16.5c2.998 0 5.74 1.1 7.843 2.918" /></svg>
+                    About Us
+                </a>
+                <a href="#company-services" class="company-nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    Services
+                </a>
+                <a href="#company-booking" class="company-nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                    Book Service
+                </a>
+                <a href="#company-resources" class="company-nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                    Resources
+                </a>
+                <a href="#company-contact" class="company-nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                    Contact
+                </a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="section active hero-section">
-            <div class="content-container text-center">
-                <h1 class="text-5xl font-bold mb-4">BongiNala Trucking</h1>
-                <p class="text-xl mb-2">Your Trusted Partner in Pan-African Logistics.</p>
-                <p class="text-lg mb-6">Strength, Reliability, and Family Values Driving Your Cargo Forward.</p>
-                <a href="#booking" class="btn switch-section-btn">Book a Service</a>
-                <a href="#services" class="btn btn-secondary ml-2 switch-section-btn">Explore Services</a>
-            </div>
-        </section>
-
-        <section id="about" class="section zulu-accent-bg">
-            <div class="content-container">
-                <h2 class="text-4xl font-bold mb-6 text-gray-800">About BongiNala</h2>
-                <div class="text-left space-y-4 text-gray-700">
-                    <p>BongiNala is more than just a trucking company; it's a legacy built on the foundations of family, dedication, and a profound understanding of the African landscape. Named in honor of his children, Bonga and Nala, our founder, a proud and strong Zulu father, established BongiNala with a vision to connect and empower businesses across Southern Africa.</p>
-                    <p>Though an accomplished academic and COO in a major South African corporate, his passion for logistics and enterprise development led to the birth of BongiNala. From humble beginnings in Newcastle, we have grown into a formidable force in the transport sector, serving esteemed clients like Cashbuild and Builders Warehouse, carrying essential goods such as steel and cement across the nation and into neighboring sub-Saharan countries.</p>
-                    <p class="owner-quote">"We believe in building bridges – not just with roads and trucks, but with trust, reliability, and a commitment to the communities we serve. BongiNala is driven by the spirit of 'Ubuntu' – I am because we are."</p>
-                    <p>Our roots in Johannesburg provide a strategic hub, while our heart remains in delivering excellence on every kilometer travelled. We are committed to upholding the highest standards of service, safety, and efficiency, ensuring your cargo reaches its destination securely and on time.</p>
+        <section id="company-home" class="company-section active">
+            <div class="company-content-container text-center">
+                <h1>BongiNala Trucking</h1>
+                <p class="subtitle">Powering Pan-African Progress. Strength. Reliability. Legacy.</p>
+                <p class="text-lg mb-8 max-w-3xl mx-auto">Your trusted partner in logistics, connecting South Africa and Sub-Saharan nations with unparalleled dedication and efficiency. We move your business forward.</p>
+                <div>
+                    <a href="#company-booking" class="btn-primary switch-section-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /></svg>
+                        Book a Service
+                    </a>
+                    <a href="#company-services" class="btn-secondary ml-4 switch-section-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                        Explore Services
+                    </a>
                 </div>
-                <img src="https://placehold.co/600x300/f97316/ffffff?text=Our+Team+&+Values" alt="BongiNala Team or Values" class="mx-auto mt-6 rounded-lg shadow-lg">
             </div>
         </section>
 
-        <section id="services" class="section">
-            <div class="content-container">
-                <h2 class="text-4xl font-bold mb-6 text-gray-800">Our Comprehensive Services</h2>
-                <p class="text-lg mb-8 text-gray-600">Delivering excellence across South Africa and Sub-Saharan Africa (Botswana, Zimbabwe, Mozambique).</p>
-                <div class="grid md:grid-cols-3 gap-6 text-left">
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold mb-3 text-orange-600">Steel & Heavy Haulage</h3>
-                        <p class="text-gray-700">Specialized transport for steel products, construction materials, and oversized cargo. Our fleet is equipped to handle demanding loads with utmost care.</p>
+        <section id="company-about" class="company-section">
+            <div class="company-content-container">
+                <h2>Our Story: The Heart of BongiNala</h2>
+                <div class="text-left space-y-4">
+                    <p>BongiNala is far more than a logistics provider; it's a living legacy, forged from the unbreakable bonds of family, an unwavering dedication to service, and a deep-seated understanding of the African continent's pulse. Named in heartfelt tribute to his children, Bonga and Nala, our founder, a proud Zulu father and visionary leader, established BongiNala to build bridges of commerce and opportunity across Southern Africa.</p>
+                    <p>Despite a distinguished career as an academic and COO in a major South African corporate, his inherent passion for logistics and enterprise development fueled the creation of BongiNala. From its strategic base in Newcastle and operational hub in Johannesburg, we've burgeoned into a formidable presence in the transport industry. We proudly serve esteemed clients like Cashbuild and Builders Warehouse, transporting vital commodities such as steel and cement across South Africa and into neighboring sub-Saharan nations.</p>
+                    <p class="font-semibold italic text-orange-400 border-l-4 border-orange-500 pl-4 py-2 my-4">"At BongiNala, we don't just move cargo; we build connections. We are driven by the spirit of 'Ubuntu' – I am because we are – fostering trust, reliability, and a profound commitment to the communities we serve and the businesses we empower."</p>
+                    <p>Our commitment is to uphold the zenith of service standards, safety protocols, and operational efficiency, ensuring your cargo's journey is secure, timely, and contributes to your success.</p>
+                </div>
+                <img src="https://placehold.co/700x300/1f2937/f97316?text=BongiNala+Values+&+Vision" alt="BongiNala Team or Values" class="mx-auto mt-8 rounded-lg shadow-xl">
+            </div>
+        </section>
+
+        <section id="company-services" class="company-section">
+            <div class="company-content-container">
+                <h2>Comprehensive Logistics Solutions</h2>
+                <p class="text-lg mb-10 text-gray-400">Delivering excellence and reliability across South Africa and key Sub-Saharan routes (Botswana, Zimbabwe, Mozambique & beyond).</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                        </div>
+                        <h3>Steel & Heavy Haulage</h3>
+                        <p>Expert transport for steel products, construction materials, and oversized cargo. Our specialized fleet handles demanding loads with precision and care.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold mb-3 text-orange-600">Cement & Bulk Goods</h3>
-                        <p class="text-gray-700">Reliable delivery of cement and other bulk commodities for major construction and retail clients like Cashbuild and Builders Warehouse.</p>
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10.5 11.25h3M12 15h.008" /></svg>
+                        </div>
+                        <h3>Cement & Bulk Goods</h3>
+                        <p>Dependable delivery of cement, aggregates, and other bulk commodities for major construction and retail partners like Cashbuild and Builders Warehouse.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-semibold mb-3 text-orange-600">Cross-Border Transport</h3>
-                        <p class="text-gray-700">Expert navigation of cross-border logistics into Botswana, Zimbabwe, Mozambique, and beyond. We manage customs, permits, and ensure seamless transit.</p>
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177.177a2.25 2.25 0 01-.998 1.414l-2.095 1.28a2.25 2.25 0 01-2.298-.055l-2.267-1.664a2.25 2.25 0 00-1.605-.652H7.5m6.69-14.036a9 9 0 00-6.69 14.036" /></svg>
+                        </div>
+                        <h3>Cross-Border Expertise</h3>
+                        <p>Seamless navigation of cross-border logistics into Botswana, Zimbabwe, Mozambique, and further. We manage all permits, customs, and ensure smooth transit.</p>
                     </div>
                 </div>
-                <img src="https://placehold.co/700x350/cccccc/333333?text=BongiNala+Fleet+in+Action" alt="BongiNala Fleet" class="mx-auto mt-8 rounded-lg shadow-lg">
+                <img src="https://placehold.co/800x400/f97316/111827?text=BongiNala+Fleet+-+On+The+Move" alt="BongiNala Fleet in Action" class="mx-auto mt-12 rounded-lg shadow-xl">
             </div>
         </section>
 
-        <section id="booking" class="section">
-            <div class="content-container">
-                <h2 class="text-4xl font-bold mb-6 text-gray-800">Book Our Services</h2>
-                <p class="text-lg mb-6 text-gray-600">Let's get your cargo moving. Fill out the form below for a quote or to schedule a service.</p>
-                <form id="bookingForm" class="max-w-xl mx-auto text-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Full Name*" class="form-input" required>
-                        <input type="text" placeholder="Company Name" class="form-input">
-                        <input type="email" placeholder="Email Address*" class="form-input" required>
-                        <input type="tel" placeholder="Phone Number*" class="form-input" required>
+        <section id="company-booking" class="company-section">
+            <div class="company-content-container">
+                <h2>Request a Quote or Book Our Services</h2>
+                <p class="text-lg mb-8 text-gray-400">Let's get your cargo moving efficiently. Complete the form below, and our logistics experts will be in touch promptly.</p>
+                <form id="companyBookingForm" class="max-w-2xl mx-auto text-left">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Full Name*" class="form-input-company" required>
+                        <input type="text" placeholder="Company Name" class="form-input-company">
+                        <input type="email" placeholder="Email Address*" class="form-input-company" required>
+                        <input type="tel" placeholder="Phone Number*" class="form-input-company" required>
                     </div>
-                    <select class="form-input mt-4">
+                    <select class="form-input-company mt-6">
                         <option value="">Select Service Required*</option>
                         <option value="steel">Steel & Heavy Haulage</option>
                         <option value="cement">Cement & Bulk Goods</option>
                         <option value="cross-border">Cross-Border Transport</option>
-                        <option value="other">Other (Please specify)</option>
+                        <option value="other">Other (Please specify below)</option>
                     </select>
-                    <input type="text" placeholder="Pickup Location*" class="form-input" required>
-                    <input type="text" placeholder="Delivery Location*" class="form-input" required>
-                    <textarea placeholder="Cargo Details (Type, Weight, Dimensions)*" class="form-input form-textarea" required></textarea>
-                    <input type="date" placeholder="Preferred Date" class="form-input">
-                    <button type="submit" class="btn w-full mt-4">Request Quote / Book Now</button>
+                    <input type="text" placeholder="Pickup Location / City*" class="form-input-company" required>
+                    <input type="text" placeholder="Delivery Location / City*" class="form-input-company" required>
+                    <textarea placeholder="Cargo Details (Type, Estimated Weight, Dimensions, Special Requirements)*" class="form-input-company form-textarea-company" required></textarea>
+                    <input type="date" title="Preferred Pickup Date" class="form-input-company">
+                    <button type="submit" class="btn-primary w-full mt-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
+                        Submit Request
+                    </button>
                 </form>
-                 <div id="bookingMessage" class="mt-4 text-center"></div>
+                 <div id="companyBookingMessage" class="mt-6 text-center font-semibold"></div>
             </div>
         </section>
 
-        <section id="resources" class="section">
-            <div class="content-container w-full max-w-4xl"> <h2 class="text-4xl font-bold mb-2 text-gray-800">Trucking Resources Hub</h2>
-                <p class="text-md mb-6 text-gray-600">Key legal & operational requirements for trucking in Southern Africa. This information is for general guidance only.</p>
+        <section id="company-resources" class="company-section">
+            <div class="company-content-container w-full max-w-4xl">
+                <h2>Trucking Resources Hub</h2>
+                <p class="text-md mb-8 text-gray-400">Key legal & operational insights for trucking in Southern Africa. For general guidance only; consult legal experts for specific advice.</p>
 
-                <div class="carousel" id="resourcesCarousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <h3 class="text-2xl font-semibold mb-3 text-center">South Africa</h3>
+                <div class="resources-carousel" id="companyResourcesCarousel">
+                    <div class="resources-carousel-inner">
+                        <div class="resource-item">
+                            <h3>South Africa</h3>
                             <h4>Driver Requirements:</h4>
-                            <ul>
-                                <li>Valid PrDP (Professional Driving Permit) for the correct vehicle category.</li>
-                                <li>Minimum age requirements (typically 25 for heavy commercial vehicles).</li>
-                                <li>Medical fitness certificate.</li>
-                                <li>Sober habits, criminal record check may be required.</li>
-                            </ul>
+                            <ul><li>Valid PrDP; Min. age (often 25 for heavy); Medical cert.; Sober habits.</li></ul>
                             <h4>Load Requirements:</h4>
-                            <ul>
-                                <li>Adherence to National Road Traffic Act for vehicle dimensions and mass.</li>
-                                <li>Proper load securing techniques (SANS codes).</li>
-                                <li>Permits for abnormal loads if applicable.</li>
-                                <li>Regulations for dangerous goods (Hazchem).</li>
-                            </ul>
+                            <ul><li>Adherence to National Road Traffic Act (dimensions/mass); Load securing (SANS); Abnormal load permits; Hazchem regs.</li></ul>
                             <h4>Inspections & Licenses:</h4>
-                            <ul>
-                                <li>Certificate of Fitness (COF) for commercial vehicles, renewed regularly.</li>
-                                <li>Company Operator Card.</li>
-                                <li>Vehicle licenses and registration.</li>
-                            </ul>
+                            <ul><li>COF for commercial vehicles; Company Operator Card; Vehicle licenses.</li></ul>
                             <h4>Cross-Border:</h4>
-                            <ul>
-                                <li>Cross-Border Road Transport Agency (C-BRTA) permits.</li>
-                                <li>Customs documentation (SAD 500, manifests).</li>
-                                <li>TIP (Temporary Import Permit) for foreign registered vehicles.</li>
-                            </ul>
+                            <ul><li>C-BRTA permits; Customs docs (SAD 500); TIP for foreign vehicles.</li></ul>
                              <h4>Insurance & Medical:</h4>
-                            <ul>
-                                <li>Compulsory third-party insurance.</li>
-                                <li>Goods-in-Transit (GIT) insurance highly recommended.</li>
-                                <li>Driver medical aid/workmen's compensation.</li>
-                            </ul>
+                            <ul><li>Compulsory 3rd party; GIT insurance vital; Driver medical aid/workmen's comp.</li></ul>
                         </div>
-
-                        <div class="carousel-item">
-                            <h3 class="text-2xl font-semibold mb-3 text-center">Botswana</h3>
+                        <div class="resource-item">
+                            <h3>Botswana</h3>
                             <h4>Driver Requirements:</h4>
-                            <ul>
-                                <li>Valid driver's license equivalent to Botswana Class EC.</li>
-                                <li>Professional Driving Permit (PrDP) or equivalent.</li>
-                                <li>Medical fitness.</li>
-                            </ul>
+                            <ul><li>Valid license (equiv. Botswana Class EC); PrDP or equiv.; Medical fitness.</li></ul>
                             <h4>Load Requirements:</h4>
-                            <ul>
-                                <li>Compliance with Road Traffic Act and vehicle dimension/weight limits.</li>
-                                <li>Secure loading practices.</li>
-                                <li>Permits for abnormal or hazardous loads.</li>
-                            </ul>
+                            <ul><li>Compliance with Road Traffic Act; Secure loading; Permits for abnormal/hazardous loads.</li></ul>
                             <h4>Inspections & Licenses:</h4>
-                            <ul>
-                                <li>Vehicle roadworthiness certificate.</li>
-                                <li>Transport permits from the Department of Road Transport and Safety.</li>
-                            </ul>
+                            <ul><li>Vehicle roadworthiness cert.; Transport permits (Dept. of Road Transport & Safety).</li></ul>
                             <h4>Cross-Border:</h4>
-                            <ul>
-                                <li>Bilateral/SADC road transport agreements.</li>
-                                <li>Customs clearance (Botswana Unified Revenue Service - BURS).</li>
-                                <li>Temporary Import Permits (TIPs) or Carnets.</li>
-                            </ul>
+                            <ul><li>Bilateral/SADC agreements; Customs (BURS); TIPs/Carnets.</li></ul>
                              <h4>Insurance & Medical:</h4>
-                            <ul>
-                                <li>Motor vehicle third-party insurance (Botswana-specific may be required).</li>
-                                <li>GIT insurance.</li>
-                            </ul>
+                            <ul><li>Motor 3rd party (Botswana-specific may be needed); GIT insurance.</li></ul>
                         </div>
-
-                        <div class="carousel-item">
-                            <h3 class="text-2xl font-semibold mb-3 text-center">Zimbabwe</h3>
+                        <div class="resource-item">
+                            <h3>Zimbabwe</h3>
                             <h4>Driver Requirements:</h4>
-                            <ul>
-                                <li>Valid driver's license (Class 2 for heavy vehicles).</li>
-                                <li>Defensive Driving Certificate often required.</li>
-                                <li>Medical examination certificate.</li>
-                            </ul>
+                            <ul><li>Valid license (Class 2 heavy); Defensive Driving Cert.; Medical exam cert.</li></ul>
                             <h4>Load Requirements:</h4>
-                            <ul>
-                                <li>Adherence to vehicle axle load limits and dimensions.</li>
-                                <li>Securement of cargo as per regulations.</li>
-                                <li>Permits for abnormal loads from Ministry of Transport.</li>
-                            </ul>
+                            <ul><li>Adherence to axle load/dimensions; Secure cargo; Abnormal load permits (Min. of Transport).</li></ul>
                             <h4>Inspections & Licenses:</h4>
-                            <ul>
-                                <li>Certificate of Fitness (COF) from Vehicle Inspection Department (VID).</li>
-                                <li>Operator's License.</li>
-                            </ul>
+                            <ul><li>COF (VID); Operator's License.</li></ul>
                             <h4>Cross-Border:</h4>
-                            <ul>
-                                <li>COMESA/SADC permits and protocols.</li>
-                                <li>Customs documentation (ZIMRA).</li>
-                                <li>Carbon Tax, Road Access Fees.</li>
-                                <li>CVG (Commercial Vehicle Guarantee) may be required.</li>
-                            </ul>
+                            <ul><li>COMESA/SADC permits; Customs (ZIMRA); Carbon Tax, Road Access Fees; CVG.</li></ul>
                              <h4>Insurance & Medical:</h4>
-                            <ul>
-                                <li>Statutory motor insurance.</li>
-                                <li>GIT insurance.</li>
-                            </ul>
+                            <ul><li>Statutory motor insurance; GIT insurance.</li></ul>
                         </div>
-
-                        <div class="carousel-item">
-                            <h3 class="text-2xl font-semibold mb-3 text-center">Mozambique</h3>
+                        <div class="resource-item">
+                            <h3>Mozambique</h3>
                             <h4>Driver Requirements:</h4>
-                            <ul>
-                                <li>Valid Mozambican or SADC-recognized driver's license for heavy vehicles.</li>
-                                <li>Professional driving qualifications may be scrutinized.</li>
-                            </ul>
+                            <ul><li>Valid Mozambican/SADC license (heavy); Professional driving quals.</li></ul>
                             <h4>Load Requirements:</h4>
-                            <ul>
-                                <li>Compliance with Mozambican road traffic code (Código de Estrada) on weight/dimensions.</li>
-                                <li>Secure loading. Specific permits for oversized cargo.</li>
-                            </ul>
+                            <ul><li>Compliance with Código de Estrada (weight/dimensions); Secure loading; Oversized cargo permits.</li></ul>
                             <h4>Inspections & Licenses:</h4>
-                            <ul>
-                                <li>Vehicle inspection certificate (Inspeção Periódica Obrigatória).</li>
-                                <li>Transport license ("Alvará de Transporte").</li>
-                            </ul>
+                            <ul><li>Vehicle inspection cert. (Inspeção Periódica); Transport license ("Alvará de Transporte").</li></ul>
                             <h4>Cross-Border:</h4>
-                            <ul>
-                                <li>Bilateral agreements, SADC protocols.</li>
-                                <li>Customs clearance (Autoridade Tributária de Moçambique).</li>
-                                <li>Third-party insurance (often local required). Various road tolls and levies.</li>
-                                <li>Port health clearances may apply.</li>
-                            </ul>
+                            <ul><li>Bilateral agreements, SADC protocols; Customs (Autoridade Tributária); Local 3rd party insurance; Tolls/levies.</li></ul>
                              <h4>Insurance & Medical:</h4>
-                            <ul>
-                                <li>Mandatory third-party liability insurance (Mozambican).</li>
-                                <li>GIT insurance.</li>
-                            </ul>
+                            <ul><li>Mandatory 3rd party (Mozambican); GIT insurance.</li></ul>
                         </div>
                     </div>
-                    <button class="carousel-control prev" onclick="moveCarousel('resourcesCarousel', -1)">&#10094;</button>
-                    <button class="carousel-control next" onclick="moveCarousel('resourcesCarousel', 1)">&#10095;</button>
+                </div>
+                <div class="carousel-controls-company">
+                    <button class="carousel-btn-company" onclick="moveCompanyCarousel('companyResourcesCarousel', -1)">&#10094; Prev</button>
+                    <button class="carousel-btn-company" onclick="moveCompanyCarousel('companyResourcesCarousel', 1)">Next &#10095;</button>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <div class="content-container">
-                <h2 class="text-4xl font-bold mb-6 text-gray-800">Get In Touch</h2>
-                <p class="text-lg mb-8 text-gray-600">We're ready to discuss your logistics needs. Contact us today!</p>
-                <div class="grid md:grid-cols-2 gap-8 text-left">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-3 text-orange-600">BongiNala Headquarters (Newcastle)</h3>
-                        <p class="text-gray-700">123 Industrial Road, Newcastle, KZN, South Africa</p>
-                        <p class="text-gray-700"><strong>Phone:</strong> +27 (0)34 123 4567</p>
-                        <p class="text-gray-700"><strong>Email:</strong> <a href="mailto:info@bonginala.co.za" class="text-orange-600 hover:underline">info@bonginala.co.za</a></p>
+        <section id="company-contact" class="company-section">
+            <div class="company-content-container">
+                <h2>Connect With BongiNala</h2>
+                <p class="text-lg mb-10 text-gray-400">Ready to discuss your logistics strategy? Our team is eager to assist. Reach out today!</p>
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-orange-500 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375M5.25 6.75h.008v.008H5.25V6.75zm0 5.25h.008v.008H5.25V12zm0 5.25h.008v.008H5.25v-.008zm13.5-5.25h.008v.008h-.008V12zm0 5.25h.008v.008h-.008v-.008zm0-10.5h.008v.008h-.008V6.75z" /></svg>
+                            Headquarters (Newcastle)
+                        </h3>
+                        <p><span class="contact-icon">📍</span>123 Industrial Road, Newcastle, KZN, RSA</p>
+                        <p><span class="contact-icon">📞</span> <a href="tel:+27341234567" class="hover:text-orange-400">+27 (0)34 123 4567</a></p>
+                        <p><span class="contact-icon">✉️</span> <a href="mailto:info@bonginala.co.za" class="hover:text-orange-400">info@bonginala.co.za</a></p>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-3 text-orange-600">Johannesburg Operations</h3>
-                        <p class="text-gray-700">45 Business Hub Drive, Sandton, Gauteng, South Africa</p>
-                        <p class="text-gray-700"><strong>Phone:</strong> +27 (0)11 987 6543</p>
-                        <p class="text-gray-700"><strong>Email:</strong> <a href="mailto:ops@bonginala.co.za" class="text-orange-600 hover:underline">ops@bonginala.co.za</a></p>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-orange-500 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>
+                            Johannesburg Operations
+                        </h3>
+                        <p><span class="contact-icon">📍</span>45 Business Hub Drive, Sandton, Gauteng, RSA</p>
+                        <p><span class="contact-icon">📞</span> <a href="tel:+27119876543" class="hover:text-orange-400">+27 (0)11 987 6543</a></p>
+                        <p><span class="contact-icon">✉️</span> <a href="mailto:ops@bonginala.co.za" class="hover:text-orange-400">ops@bonginala.co.za</a></p>
                     </div>
                 </div>
-                 <img src="https://placehold.co/600x300/9ca3af/ffffff?text=Map+or+Contact+Graphic" alt="Contact Graphic" class="mx-auto mt-8 rounded-lg shadow-lg">
+                 <img src="https://placehold.co/700x300/111827/f97316?text=Connect+With+Us+-+Map+Placeholder" alt="Contact Graphic" class="mx-auto mt-12 rounded-lg shadow-xl">
             </div>
         </section>
     </main>
 
-    <footer class="text-sm">
-        &copy; <span id="currentYear"></span> BongiNala Trucking (Pty) Ltd. All Rights Reserved. Designed for a Brighter African Future.
+    <footer class="company-footer">
+        &copy; <span id="companyCurrentYear"></span> BongiNala Trucking (Pty) Ltd. All Rights Reserved. Driving Africa's Future, Together.
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.section');
-            const switchSectionBtns = document.querySelectorAll('.switch-section-btn'); // For buttons that also switch sections
+            const navLinks = document.querySelectorAll('.company-nav-link');
+            const sections = document.querySelectorAll('.company-section');
+            const switchSectionBtns = document.querySelectorAll('.switch-section-btn');
 
             function showSection(targetId) {
                 sections.forEach(section => {
@@ -464,7 +500,8 @@
                         link.classList.add('active');
                     }
                 });
-                window.scrollTo(0,0); // Ensure top of new section is shown
+                const activeSectionContent = document.querySelector('.company-section.active .company-content-container');
+                if (activeSectionContent) activeSectionContent.scrollTop = 0;
             }
 
             navLinks.forEach(link => {
@@ -483,48 +520,48 @@
                 });
             });
 
-            // Initialize carousels
-            const carousels = document.querySelectorAll('.carousel');
+            // Initialize first section
+            showSection('company-home');
+            
+            // Carousels
+            const carousels = document.querySelectorAll('.resources-carousel'); // Add other carousel IDs if needed
             carousels.forEach(carousel => {
                 carousel.setAttribute('data-current-index', '0');
             });
             
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            document.getElementById('companyCurrentYear').textContent = new Date().getFullYear();
 
-            // Booking form submission
-            const bookingForm = document.getElementById('bookingForm');
-            const bookingMessage = document.getElementById('bookingMessage');
+            const bookingForm = document.getElementById('companyBookingForm');
+            const bookingMessage = document.getElementById('companyBookingMessage');
             if (bookingForm) {
                 bookingForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // Basic validation check
                     let isValid = true;
                     bookingForm.querySelectorAll('[required]').forEach(input => {
                         if (!input.value.trim()) {
                             isValid = false;
                             input.style.borderColor = 'red';
                         } else {
-                            input.style.borderColor = '#d1d5db';
+                            input.style.borderColor = '#4b5563'; // Reset border
                         }
                     });
 
                     if (isValid) {
-                        bookingMessage.textContent = 'Thank you for your booking request! We will contact you shortly.';
-                        bookingMessage.className = 'mt-4 text-center text-green-600 font-semibold';
+                        bookingMessage.textContent = 'Thank you! Your request has been submitted. We will contact you shortly.';
+                        bookingMessage.className = 'mt-6 text-center font-semibold text-green-400';
                         bookingForm.reset();
                     } else {
-                        bookingMessage.textContent = 'Please fill in all required fields.';
-                        bookingMessage.className = 'mt-4 text-center text-red-600 font-semibold';
+                        bookingMessage.textContent = 'Please fill in all required fields marked with *.';
+                        bookingMessage.className = 'mt-6 text-center font-semibold text-red-400';
                     }
                 });
             }
         });
 
-        function moveCarousel(carouselId, direction) {
+        function moveCompanyCarousel(carouselId, direction) {
             const carousel = document.getElementById(carouselId);
-            const carouselInner = carousel.querySelector('.carousel-inner');
-            const items = carousel.querySelectorAll('.carousel-item');
+            const carouselInner = carousel.querySelector('.resources-carousel-inner'); // Ensure this class matches your carousel inner div
+            const items = carousel.querySelectorAll('.resource-item'); // Ensure this class matches your carousel items
             const totalItems = items.length;
             let currentIndex = parseInt(carousel.getAttribute('data-current-index'));
 
